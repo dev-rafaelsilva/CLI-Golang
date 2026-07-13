@@ -1,5 +1,3 @@
-// Package patterns contém as assinaturas (regex) usadas para detectar
-// segredos conhecidos em código-fonte.
 package patterns
 
 import "regexp"
@@ -18,7 +16,6 @@ type Pattern struct {
 	Severity Severity
 }
 
-// Default retorna o conjunto padrão de padrões conhecidos.
 func Default() []Pattern {
 	return []Pattern{
 		{

@@ -1,5 +1,3 @@
-// Package report formata os achados do scanner para saída no terminal
-// (texto legível ou JSON, para integração com outras ferramentas/CI).
 package report
 
 import (
@@ -69,7 +67,6 @@ func HasCritical(findings []scanner.Finding) bool {
 	return false
 }
 
-// PrintHistory formata os achados do "secretscan history".
 func PrintHistory(findings []scanner.HistoryFinding) {
 	if len(findings) == 0 {
 		fmt.Println("✅ Nenhum segredo encontrado no histórico de commits.")
@@ -88,7 +85,6 @@ func PrintHistory(findings []scanner.HistoryFinding) {
 	fmt.Println("   Rotacione as chaves encontradas — apagar o arquivo não é suficiente.")
 }
 
-// HasCriticalHistory retorna true se houver achado de severidade alta no histórico.
 func HasCriticalHistory(findings []scanner.HistoryFinding) bool {
 	for _, f := range findings {
 		if f.Severity == patterns.High {

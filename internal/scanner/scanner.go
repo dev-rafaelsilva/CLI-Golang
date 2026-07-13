@@ -1,5 +1,3 @@
-// Package scanner percorre arquivos de um diretório e aplica os
-// patterns de detecção de segredos.
 package scanner
 
 import (
@@ -30,7 +28,6 @@ var ignoredExt = map[string]bool{
 	".exe": true, ".bin": true, ".so": true,
 }
 
-// Scan percorre root em busca de segredos usando os patterns padrão.
 func Scan(root string) ([]Finding, error) {
 	var findings []Finding
 	pats := patterns.Default()
@@ -86,8 +83,6 @@ func scanFile(path string, pats []patterns.Pattern) ([]Finding, error) {
 	return findings, sc.Err()
 }
 
-// GitignoreMissing verifica se arquivos sensíveis comuns (.env, *.pem, *.key)
-// não estão listados no .gitignore do diretório root.
 func GitignoreMissing(root string) []string {
 	sensitivePatterns := []string{".env", "*.pem", "*.key", "*.p12"}
 

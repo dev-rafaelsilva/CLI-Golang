@@ -9,8 +9,6 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-// runMenu abre o menu interativo quando "secretscan" é chamado sem
-// nenhum subcomando (nem "run", "init" etc).
 func runMenu() {
 	prompt := promptui.Select{
 		Label: "🔍 secretscan — o que você quer fazer?",
@@ -23,7 +21,6 @@ func runMenu() {
 
 	_, escolha, err := prompt.Run()
 	if err != nil {
-		// Ctrl+C ou Esc cai aqui — sai calado, sem stacktrace feio.
 		return
 	}
 
@@ -37,8 +34,6 @@ func runMenu() {
 	}
 }
 
-// executarScan roda a mesma lógica do "secretscan run ." direto,
-// sem passar pelo parsing de flags do Cobra.
 func executarScan(target string) {
 	fmt.Printf("🔍 Escaneando %s...\n\n", target)
 
@@ -52,7 +47,6 @@ func executarScan(target string) {
 }
 
 func executarInit() {
-	// reaproveita o RunE do initCmd já existente
 	if err := initCmd.RunE(initCmd, nil); err != nil {
 		fmt.Fprintln(os.Stderr, "erro:", err)
 	}
