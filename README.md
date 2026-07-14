@@ -2,13 +2,17 @@
 
 CLI em Go que escaneia repositórios em busca de segredos expostos — chaves de API, senhas, tokens — tanto no código atual quanto no **histórico de commits**, onde a maioria das ferramentas não olha.
 
-🔍 Escaneando...
-[ALTO]  .env:2                  → Stripe API Key detectado
-[MEDIO] docker-compose.yml:4    → Generic API Key detectado
-[ALTO]  src/config.js:2         → AWS Access Key detectado
+🔍 **Escaneando...**
 
-⚠️  .gitignore: 4 padrão(ões) sensível(is) ausente(s): [.env *.pem *.key *.p12]
-3 problema(s) encontrado(s) (2 alto, 1 médio)
+| Severidade | Arquivo | Tipo de segredo |
+|---|---|---|
+| 🔴 Alto | `.env:2` | Stripe API Key |
+| 🟡 Médio | `docker-compose.yml:4` | Generic API Key |
+| 🔴 Alto | `src/config.js:2` | AWS Access Key |
+
+⚠️ **`.gitignore`**: 4 padrões sensíveis ausentes — `.env`, `*.pem`, `*.key`, `*.p12`
+
+**3 problemas encontrados** (2 alto, 1 médio)
 
 ## Por que isso importa
 
